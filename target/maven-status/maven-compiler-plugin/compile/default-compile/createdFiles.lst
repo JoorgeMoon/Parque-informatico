@@ -1,0 +1,5 @@
+com/unsch/unsch/controller/ListaEquiposController.class
+com/unsch/unsch/model/ListaEquipos.class
+com/unsch/unsch/repository/ListaEquiposRepository.class
+com/unsch/unsch/UnschApplication.class
+com/unsch/unsch/service/ListaEquiposService.class

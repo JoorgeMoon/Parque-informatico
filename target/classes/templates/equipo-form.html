@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Equipo</title>
+    <!-- Aquí agregarás tu CSS -->
+</head>
+<body>
+    <h1 th:text="${equipo.id == null ? 'Agregar Nuevo Equipo' : 'Editar Equipo'}"></h1>
+
+    <form th:action="@{/lista}" th:object="${equipo}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label for="dependencia">Dependencia</label>
+        <input type="text" th:field="*{dependencia}" placeholder="Ingrese la dependencia" required />
+
+        <label for="descripcion">Descripción</label>
+        <input type="text" th:field="*{descripcion}" placeholder="Ingrese la descripción" required />
+
+        <label for="cantidad">Cantidad</label>
+        <input type="number" th:field="*{cantidad}" placeholder="Ingrese la cantidad" required />
+
+        <label for="valorUnitario">Valor Unitario</label>
+        <input type="number" th:field="*{valorUnitario}" placeholder="Ingrese el valor unitario" required />
+
+        <label for="valorTotal">Valor Total</label>
+        <input type="number" th:field="*{valorTotal}" placeholder="Valor total (calculado)" readonly />
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/lista" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+    <!-- Aquí puedes agregar JavaScript para calcular el valor total automáticamente -->
+    <script>
+        document.getElementById('cantidad').addEventListener('input', calcularValorTotal);
+        document.getElementById('valorUnitario').addEventListener('input', calcularValorTotal);
+
+        function calcularValorTotal() {
+            var cantidad = parseFloat(document.getElementById('cantidad').value);
+            var valorUnitario = parseFloat(document.getElementById('valorUnitario').value);
+            if (!isNaN(cantidad) && !isNaN(valorUnitario)) {
+                document.getElementById('valorTotal').value = (cantidad * valorUnitario).toFixed(2);
+            } else {
+                document.getElementById('valorTotal').value = '';
+            }
+        }
+    </script>
+
+</body>
+</html>

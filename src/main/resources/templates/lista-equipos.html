@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipos</title>
+    <!-- Aquí agregarás tu CSS -->
+</head>
+<body>
+    <h1>Lista de Equipos</h1>
+
+    <!-- Botón para agregar un nuevo equipo -->
+    <a href="/lista/nuevo" class="btn btn-primary">Agregar Nuevo Equipo</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Dependencia</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Valor Unitario</th>
+                <th>Valor Total</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterar sobre los equipos y mostrar cada uno -->
+            <tr th:each="equipo : ${equipos}">
+                <td th:text="${equipo.id}"></td>
+                <td th:text="${equipo.dependencia}"></td>
+                <td th:text="${equipo.descripcion}"></td>
+                <td th:text="${equipo.cantidad}"></td>
+                <td th:text="${equipo.valorUnitario}"></td>
+                <td th:text="${equipo.valorTotal}"></td>
+                <td>
+                    <!-- Botón de Editar -->
+                    <a href="/lista/editar/{id}" th:href="@{/lista/editar/{id}(id=${equipo.id})}">Editar</a>
+                    <!-- Botón de Eliminar -->
+                    <a href="/lista/eliminar/{id}" th:href="@{/lista/eliminar/{id}(id=${equipo.id})}" onclick="return confirm('¿Estás seguro de eliminar este equipo?')">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
