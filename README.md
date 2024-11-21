@@ -7,7 +7,7 @@
 
 Configurar el acceso a la base de datos en application.properties:
 ```sh
-  spring.datasource.url=jdbc:mysql://localhost:3306/NOMBRE-DE-BASE-DE-DATOS
+  spring.datasource.url=jdbc:mysql://localhost:3306/parque_informatico
   spring.datasource.username=tu_usuario
   spring.datasource.password=tu_contraseña
   spring.jpa.hibernate.ddl-auto=update
